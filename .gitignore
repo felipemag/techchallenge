@@ -1,10 +1,25 @@
 # Compiled class file
 *.class
 
+#Gradle
+.gradle
+build/
+
 # Log file
 *.log
 
-# BlueJ files
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### VS Code ###
+.vscode/
+
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
