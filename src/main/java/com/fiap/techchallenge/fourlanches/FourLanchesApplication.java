@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FourlanchesApplication {
+public class FourLanchesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FourlanchesApplication.class, args);
+		SpringApplication.run(FourLanchesApplication.class, args);
 	}
 
 }
