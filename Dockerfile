@@ -2,10 +2,8 @@ FROM eclipse-temurin:17-jdk-alpine
 
 VOLUME /tmp
 
-ARG JAR_FILE
+COPY build/libs/fourlanches-0.0.1-SNAPSHOT.jar fourlanches.jar
 
-COPY ${JAR_FILE} app.jar
-
-ENTRYPOINT [ "java","-jar","/app.jar" ]
+ENTRYPOINT [ "java","-jar","/fourlanches.jar" ]
 
 EXPOSE 8080
