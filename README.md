@@ -1,24 +1,22 @@
-# Getting Started
+# Four Lanches App
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Reference Documentation
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.1/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.1/gradle-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.1/reference/htmlsingle/#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.1/reference/htmlsingle/#data.sql.jpa-and-spring-data)
+### Tecnologias
+* Java 17 
+* Spring Boot
+* Postgres SQL
+* Docker
+* [Swagger](http://localhost:8080/swagger-ui/index.html)
 
-### Guides
-The following guides illustrate how to use some features concretely:
+### Pre-requisitos para rodar a aplicação
+* [Java Version: 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) 
+* [Gradle](https://gradle.org/install/)
+* [IDE IntelliJ](https://www.jetbrains.com/idea/)
+* [Docker](https://www.docker.com/)
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+### Para rodar o app no docker
+`docker compose up -d`
 
 ### Additional Links
-These additional references should also help you:
-
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
