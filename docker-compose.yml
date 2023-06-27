@@ -6,11 +6,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: p@ssw0rd
       POSTGRES_DB: fourlanches
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - "5432:5432"
-    volumes:
-      - db:./postgresql/data
   app:
+    image: fourlanches
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,6 +22,5 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=p@ssw0rd
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-volumes:
-  db:
-    driver: local
+    ports:
+      - "8080:8080"
