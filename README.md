@@ -18,5 +18,14 @@
 ### Para rodar o app no docker
 `docker compose up -d`
 
+### Para criar/atualizar imagem da app
+`docker build -t fourlanches .`
+
+### Necessário um arquivo .env na raiz do projeto com a seguinte conteúdo:
+```
+DATABASE_USERNAME=username_do_banco  
+DATABASE_PASSWORD=password_do_banco
+```
+
 ### Additional Links
 

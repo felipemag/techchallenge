@@ -3,8 +3,8 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_USER: DATABASE_USERNAME
+      POSTGRES_PASSWORD: DATABASE_PASSWORD
       POSTGRES_DB: fourlanches
       POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
@@ -19,8 +19,8 @@ services:
       - db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/fourlanches
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=p@ssw0rd
+      - SPRING_DATASOURCE_USERNAME=DATABASE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD=DATABASE_PASSWORD
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     ports:
       - "8080:8080"
