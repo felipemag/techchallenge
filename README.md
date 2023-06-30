@@ -24,5 +24,18 @@ DATABASE_USERNAME=username_do_banco
 DATABASE_PASSWORD=password_do_banco
 ```
 
+### Flyway
+Para atualizar migrações do banco, apenas rode:
+```
+./gradlew flywayMigrate -i
+```
+
+### .env -> Environemnt Variables
+Rode o comando abaixo para carregar o arquivo .env como Environment Variable (em unix-like shells)  
+Importante fazer isso para poder rodar o flyway 
+```
+./export-dot-env
+```
+
 ### Additional Links
 
