@@ -16,10 +16,7 @@
 * [Docker](https://www.docker.com/)
 
 ### Para rodar o app no docker
-`docker compose up -d`
-
-### Para criar/atualizar imagem da app
-`docker build -t fourlanches .`
+`docker compose up --build -d`
 
 ### Necessário um arquivo .env na raiz do projeto com a seguinte conteúdo:
 ```

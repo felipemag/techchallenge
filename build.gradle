@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.1.0'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id "org.flywaydb.flyway" version "9.8.1"
 }
 
 group = 'com.fiap.techchallenge'
@@ -23,16 +24,21 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//implementation 'com.h2database:h2:1.4.200'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// https://mvnrepository.com/artifact/org.postgresql/postgresql
-	implementation group: 'org.postgresql', name: 'postgresql'
+	implementation 'org.postgresql:postgresql'
 
+}
+
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/fourlanches'
+	user = System.getenv('DATABASE_USERNAME')
+	password = System.getenv('DATABASE_PASSWORD')
+	cleanDisabled = false
 }
 
 tasks.named('test') {
