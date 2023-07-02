@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api;
 
-import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerDTO;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "", consumes = "application/json", produces = "application/json")
-    public Customer saveCustomer(@RequestBody @Valid CustomerDTO customer) {
+    public Customer saveCustomer(@RequestBody @Valid CustomerVO customer) {
 
         return customerAggregate.saveCustomer(customer);
     }

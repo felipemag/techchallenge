@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.domain.aggregates;
 
-import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerDTO;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerJpaEntity;
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerRepositoryImpl;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
@@ -80,7 +80,7 @@ public class CustomerAggregateTests {
         when(customerRepository.saveCustomer(expectedCustomer))
                 .thenReturn(expectedCustomer.getCustomerEntity());
 
-        var toSaveCustomerDTO = CustomerDTO.builder()
+        var toSaveCustomerDTO = CustomerVO.builder()
                 .firstName("John")
                 .lastName("Doe")
                 .email("john.doe@email.com")

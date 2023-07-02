@@ -1,5 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driven.data;
 
+import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

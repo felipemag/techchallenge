@@ -1,5 +1,6 @@
-package com.fiap.techchallenge.fourlanches.adapter.driven.data;
+package com.fiap.techchallenge.fourlanches.domain.valueobjects;
 
+import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerJpaEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -10,7 +11,8 @@ import lombok.Data;
 @Builder
 @Data
 @AllArgsConstructor
-public class CustomerDTO {
+public class CustomerVO {
+
     @NotEmpty
     private String firstName;
 

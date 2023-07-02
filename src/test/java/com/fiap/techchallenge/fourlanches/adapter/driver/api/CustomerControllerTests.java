@@ -2,7 +2,7 @@ package com.fiap.techchallenge.fourlanches.adapter.driver.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerDTO;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import org.junit.jupiter.api.Test;
@@ -65,7 +65,7 @@ public class CustomerControllerTests {
                 .document("00011122233")
                 .build();
 
-        var customerToBeSaved = CustomerDTO.builder()
+        var customerToBeSaved = CustomerVO.builder()
                 .firstName("John")
                 .lastName("Doe")
                 .email("john.doe@email.com")

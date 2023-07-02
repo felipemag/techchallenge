@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.domain.aggregates;
 
-import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerDTO;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.exception.CustomerSaveException;
@@ -26,9 +26,9 @@ public class CustomerAggregate {
     }
 
 
-    public Customer saveCustomer(CustomerDTO customerDTO) throws CustomerSaveException {
+    public Customer saveCustomer(CustomerVO customerVO) throws CustomerSaveException {
         try {
-            return repository.saveCustomer(customerDTO.toEntity());
+            return repository.saveCustomer(customerVO.toEntity());
         } catch (IllegalArgumentException | OptimisticLockingFailureException | NullPointerException e) {
             log.error(COULD_NOT_SAVE_MSG, e);
             throw new CustomerSaveException(COULD_NOT_SAVE_MSG, e);
