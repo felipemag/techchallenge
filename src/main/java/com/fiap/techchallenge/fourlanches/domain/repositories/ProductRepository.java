@@ -12,4 +12,6 @@ public interface ProductRepository {
 
     List<Product> getProducts();
 
+    Long create(Product product);
+
 }

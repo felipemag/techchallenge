@@ -17,10 +17,17 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     public Product getProductById(String id) {
         return jpaRepository.findById(Long.getLong(id))
-                .orElseThrow(ProductNotFoundException::new).getProductEntity();
+                .orElseThrow(ProductNotFoundException::new).toProduct();
     }
 
     public List<Product> getProducts() {
-        return jpaRepository.findAll().stream().map(ProductJpaEntity::getProductEntity).collect(Collectors.toList());
+        return jpaRepository.findAll().stream().map(ProductJpaEntity::toProduct).collect(Collectors.toList());
     }
+
+    @Override
+    public Long create(Product product) {
+        ProductJpaEntity productJpaEntity = jpaRepository.save(ProductJpaEntity.fromProduct(product));
+        return productJpaEntity.getId();
+    }
+
 }
