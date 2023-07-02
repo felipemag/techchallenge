@@ -2,6 +2,7 @@ package com.fiap.techchallenge.fourlanches.adapter.driver.api;
 
 import com.fiap.techchallenge.fourlanches.domain.aggregates.ProductAggregate;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
+import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.ProductVO;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@ControllerAdvice(assignableTypes = ProductControllerAdvisor.class)
 @RequestMapping("products")
 public class ProductController {
 
@@ -32,7 +34,7 @@ public class ProductController {
 
     @PostMapping(value = "/", produces = "application/json")
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<Long> createProduct(@RequestBody ProductVO productVO) {
+    public ResponseEntity<Long> createProduct(@RequestBody ProductVO productVO) throws InvalidProductException {
         Long returnedId = productAggregate.createProduct(productVO);
         return ResponseEntity.status(HttpStatus.CREATED).body(returnedId);
     }

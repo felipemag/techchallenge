@@ -1,6 +1,7 @@
 package com.fiap.techchallenge.fourlanches.domain.aggregates;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
+import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.ProductVO;
 import lombok.AllArgsConstructor;
@@ -22,9 +23,11 @@ public class ProductAggregate {
         return productRepository.getProducts();
     }
 
-    public Long createProduct(ProductVO productVO) {
+    public Long createProduct(ProductVO productVO) throws InvalidProductException {
         Product product = productVO.toProduct();
-        // Validações de Negócio
+        if(!product.isValid()) {
+            throw new InvalidProductException();
+        }
         return productRepository.create(product);
     }
 
