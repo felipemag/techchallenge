@@ -1,7 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driven.data;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
-import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

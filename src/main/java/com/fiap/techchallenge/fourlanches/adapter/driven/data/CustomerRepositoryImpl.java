@@ -4,7 +4,6 @@ import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.CustomerRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Repository;
 
 @Repository

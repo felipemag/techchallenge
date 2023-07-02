@@ -3,8 +3,6 @@ package com.fiap.techchallenge.fourlanches.adapter.driver.api;
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerDTO;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
-import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;
-import com.fiap.techchallenge.fourlanches.domain.exception.InternalServerError;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 

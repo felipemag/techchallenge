@@ -4,7 +4,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 
 @Data
-
 public class CustomerNotFoundException extends EntityNotFoundException {
     public CustomerNotFoundException() {
     }
