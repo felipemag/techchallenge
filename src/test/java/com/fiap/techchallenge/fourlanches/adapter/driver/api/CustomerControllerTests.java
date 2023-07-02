@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerDTO;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
-import com.fiap.techchallenge.fourlanches.domain.exception.CustomerControllerAdvisor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
