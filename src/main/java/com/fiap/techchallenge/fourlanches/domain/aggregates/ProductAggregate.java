@@ -36,4 +36,8 @@ public class ProductAggregate {
         return productRepository.create(product);
     }
 
+    public void deleteProduct(String id) {
+         productRepository.deleteProduct(id);
+    }
+
 }

@@ -47,4 +47,10 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(returnedId);
     }
 
+    @DeleteMapping(value = "/{id}", produces = "application/json")
+    @ApiResponse(responseCode = "200")
+    public void deleteProduct(@PathVariable String id) {
+         productAggregate.deleteProduct(id);
+    }
+
 }

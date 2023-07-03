@@ -30,6 +30,10 @@ public class ProductRepositoryImpl implements ProductRepository {
         return jpaRepository.findByCategory(category.toString()).stream().map(ProductJpaEntity::toProduct).collect(Collectors.toList());
     }
 
+    public void deleteProduct(String id) {
+        jpaRepository.deleteById(Long.getLong(id));
+    }
+
     @Override
     public Long create(Product product) {
         ProductJpaEntity productJpaEntity = jpaRepository.save(ProductJpaEntity.fromProduct(product));
