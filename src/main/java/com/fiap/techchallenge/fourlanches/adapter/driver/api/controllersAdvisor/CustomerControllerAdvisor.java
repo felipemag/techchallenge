@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.adapter.driver.api;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.ApiErrorMessage;
 import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;

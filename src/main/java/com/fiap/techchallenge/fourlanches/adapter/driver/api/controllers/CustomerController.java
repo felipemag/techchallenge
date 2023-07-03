@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.adapter.driver.api;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;

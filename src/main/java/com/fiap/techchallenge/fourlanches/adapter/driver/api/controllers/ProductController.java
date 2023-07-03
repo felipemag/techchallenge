@@ -1,5 +1,6 @@
-package com.fiap.techchallenge.fourlanches.adapter.driver.api;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
+import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.ProductControllerAdvisor;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.ProductAggregate;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;

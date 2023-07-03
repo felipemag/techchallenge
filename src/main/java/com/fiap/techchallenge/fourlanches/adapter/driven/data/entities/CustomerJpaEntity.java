@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.adapter.driven.data;
+package com.fiap.techchallenge.fourlanches.adapter.driven.data.entities;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import jakarta.persistence.Entity;

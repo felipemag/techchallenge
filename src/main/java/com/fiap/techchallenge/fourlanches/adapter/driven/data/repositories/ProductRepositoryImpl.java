@@ -1,5 +1,7 @@
-package com.fiap.techchallenge.fourlanches.adapter.driven.data;
+package com.fiap.techchallenge.fourlanches.adapter.driven.data.repositories;
 
+import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.ProductJpaEntity;
+import com.fiap.techchallenge.fourlanches.adapter.driven.data.ProductJpaRepository;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.ProductNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;

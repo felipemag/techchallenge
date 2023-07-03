@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.domain.valueobjects;
 
-import com.fiap.techchallenge.fourlanches.adapter.driven.data.CustomerJpaEntity;
+import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.CustomerJpaEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
