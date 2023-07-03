@@ -14,5 +14,7 @@ public class Order {
     private Long id;
     private BigDecimal price;
 
-
+    public boolean isValid() {
+        return true;
+    }
 }
