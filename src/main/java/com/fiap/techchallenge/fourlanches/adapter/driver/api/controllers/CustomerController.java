@@ -6,15 +6,19 @@ import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("customers")
 public class CustomerController {
+    private final CustomerAggregate customerAggregate;
 
-    private CustomerAggregate customerAggregate;
+    @Autowired
+    public CustomerController(CustomerAggregate customerAggregate) {
+        this.customerAggregate = customerAggregate;
+    }
 
     @GetMapping(value = "/{document}", produces = "application/json")
     public Customer getCustomerByDocument(@PathVariable String document) {

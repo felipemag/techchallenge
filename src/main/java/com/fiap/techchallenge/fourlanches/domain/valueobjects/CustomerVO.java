@@ -7,10 +7,12 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
 @Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class CustomerVO {
 
     @NotEmpty
@@ -19,11 +21,9 @@ public class CustomerVO {
     @NotEmpty
     private String lastName;
 
-    @NotEmpty
     @Email
     private String email;
 
-    @NotEmpty
     @Size(min = 11, max = 11, message = "invalid document size, it should have 11 characters")
     private String document;
 
@@ -36,3 +36,4 @@ public class CustomerVO {
                 .build();
     }
 }
+

@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 public class GeneralControllerAdvisor {
 
     @ExceptionHandler(InternalServerError.class)
-    public ResponseEntity<Object> handleNodataFoundException(
+    public ResponseEntity<Object> handleInternalServerErrorException(
             CustomerSaveException ex, WebRequest request) {
 
         var errorMessage = new ApiErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, "an error happened");

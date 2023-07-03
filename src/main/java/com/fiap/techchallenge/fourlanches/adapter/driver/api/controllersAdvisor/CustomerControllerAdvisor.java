@@ -12,7 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class CustomerControllerAdvisor {
     @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<Object> handleCityNotFoundException(
+    public ResponseEntity<Object> handleCustomerNotFoundException(
             CustomerNotFoundException ex, WebRequest request) {
 
         var errorMessage = new ApiErrorMessage(HttpStatus.NOT_FOUND, "customer not found");
@@ -21,7 +21,7 @@ public class CustomerControllerAdvisor {
     }
 
     @ExceptionHandler(CustomerSaveException.class)
-    public ResponseEntity<Object> handleNodataFoundException(
+    public ResponseEntity<Object> handleCustomerSaveException(
             CustomerSaveException ex, WebRequest request) {
 
         var errorMessage = new ApiErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, "could not save customer");
