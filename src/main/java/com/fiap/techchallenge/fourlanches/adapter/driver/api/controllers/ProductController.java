@@ -2,6 +2,7 @@ package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.ProductControllerAdvisor;
 import com.fiap.techchallenge.fourlanches.domain.aggregates.ProductAggregate;
+import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.ProductVO;
@@ -31,6 +32,12 @@ public class ProductController {
     @ApiResponse(responseCode = "200")
     public List<Product> getProducts() {
         return productAggregate.getProducts();
+    }
+
+    @GetMapping(value = "/categories/{category}", produces = "application/json")
+    @ApiResponse(responseCode = "200")
+    public List<Product> getProductsByCategory(@PathVariable Category category) {
+        return productAggregate.getProductsByCategory(category);
     }
 
     @PostMapping(value = "/", produces = "application/json")

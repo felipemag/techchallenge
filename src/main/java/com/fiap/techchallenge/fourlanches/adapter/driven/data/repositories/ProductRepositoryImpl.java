@@ -2,6 +2,7 @@ package com.fiap.techchallenge.fourlanches.adapter.driven.data.repositories;
 
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.ProductJpaEntity;
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.ProductJpaRepository;
+import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.ProductNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;
@@ -24,6 +25,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     public List<Product> getProducts() {
         return jpaRepository.findAll().stream().map(ProductJpaEntity::toProduct).collect(Collectors.toList());
+    }
+    public List<Product> getProductsByCategory(Category category) {
+        return jpaRepository.findByCategory(category.toString()).stream().map(ProductJpaEntity::toProduct).collect(Collectors.toList());
     }
 
     @Override
