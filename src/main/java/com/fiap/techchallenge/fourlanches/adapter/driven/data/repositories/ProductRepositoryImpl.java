@@ -34,10 +34,15 @@ public class ProductRepositoryImpl implements ProductRepository {
         jpaRepository.deleteById(Long.getLong(id));
     }
 
+    public void updateProduct(Product product) {
+        jpaRepository.save(ProductJpaEntity.fromProduct(product));
+    }
+
     @Override
     public Long create(Product product) {
         ProductJpaEntity productJpaEntity = jpaRepository.save(ProductJpaEntity.fromProduct(product));
         return productJpaEntity.getId();
     }
+
 
 }

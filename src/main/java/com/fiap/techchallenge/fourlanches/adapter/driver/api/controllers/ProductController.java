@@ -47,6 +47,12 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(returnedId);
     }
 
+    @PutMapping(value = "/{id}", produces = "application/json")
+    @ApiResponse(responseCode = "200")
+    public void updateProduct(@PathVariable String id, @RequestBody ProductVO productVO) throws InvalidProductException {
+        productAggregate.updateProduct(id, productVO);
+    }
+
     @DeleteMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public void deleteProduct(@PathVariable String id) {

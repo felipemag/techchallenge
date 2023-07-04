@@ -18,4 +18,6 @@ public interface ProductRepository {
     Long create(Product product);
 
     void deleteProduct(String id);
+
+    void updateProduct(Product product);
 }

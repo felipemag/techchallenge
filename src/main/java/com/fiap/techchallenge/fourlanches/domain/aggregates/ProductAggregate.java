@@ -36,6 +36,16 @@ public class ProductAggregate {
         return productRepository.create(product);
     }
 
+    public void updateProduct(String id, ProductVO productVO) throws InvalidProductException {
+        Product product = productVO.toProduct();
+        if(!product.isValid()) {
+            throw new InvalidProductException();
+        }
+        productRepository.getProductById(id);
+        product.setId(Long.getLong(id));
+        productRepository.updateProduct(product);
+    }
+
     public void deleteProduct(String id) {
          productRepository.deleteProduct(id);
     }
