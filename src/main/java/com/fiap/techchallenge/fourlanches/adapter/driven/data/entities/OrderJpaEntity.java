@@ -1,6 +1,7 @@
 package com.fiap.techchallenge.fourlanches.adapter.driven.data.entities;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,6 +40,15 @@ public class OrderJpaEntity {
     @Column(name = "total_price")
     private BigDecimal totalPrice;
     private String status;
+
+    public Order toOrder() {
+        return Order.builder()
+                .id(id)
+                .totalPrice(totalPrice)
+                .status(OrderStatus.valueOf(status))
+                .orderItems(orderItems.stream().map(OrderItemJpaEntity::toOrderItem).toList())
+                .build();
+    }
 
     public static OrderJpaEntity fromOrder(Order order) {
         OrderJpaEntity orderJpaEntity = OrderJpaEntity.builder()

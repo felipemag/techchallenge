@@ -39,6 +39,15 @@ public class OrderItemJpaEntity {
     private BigDecimal price;
     private String observation;
 
+    public OrderItem toOrderItem() {
+        return OrderItem.builder()
+                .productId(productId)
+                .quantity(quantity)
+                .price(price)
+                .observation(observation)
+                .build();
+    }
+
     public static OrderItemJpaEntity fromOrderItem(OrderItem orderItem, OrderJpaEntity order) {
         return OrderItemJpaEntity.builder()
                 .order(order)

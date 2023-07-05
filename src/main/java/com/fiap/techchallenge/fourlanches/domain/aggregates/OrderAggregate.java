@@ -8,6 +8,8 @@ import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderVO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderAggregate {
@@ -21,6 +23,10 @@ public class OrderAggregate {
         }
         order.setStatus(OrderStatus.CREATED);
         return repository.create(order);
+    }
+
+    public List<Order> getOrdersByStatus(OrderStatus status) {
+        return repository.getOrdersByStatus(status);
     }
 
 }
