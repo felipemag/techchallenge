@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor;
 
-import com.fiap.techchallenge.fourlanches.domain.entities.ApiErrorMessage;
+import com.fiap.techchallenge.fourlanches.adapter.driver.api.ApiErrorMessage;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
 import com.fiap.techchallenge.fourlanches.domain.exception.ProductNotFoundException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

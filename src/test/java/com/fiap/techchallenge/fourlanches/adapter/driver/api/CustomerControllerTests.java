@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers.CustomerController;
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.CustomerControllerAdvisor;
-import com.fiap.techchallenge.fourlanches.domain.entities.ApiErrorMessage;
 import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.exception.CustomerSaveException;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;

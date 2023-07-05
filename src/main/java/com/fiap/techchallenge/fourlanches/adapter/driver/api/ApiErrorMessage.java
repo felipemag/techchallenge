@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.domain.entities;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api;
 
 import lombok.Builder;
 import lombok.Data;
