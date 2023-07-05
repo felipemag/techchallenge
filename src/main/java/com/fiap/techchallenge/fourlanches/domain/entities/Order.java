@@ -1,10 +1,13 @@
 package com.fiap.techchallenge.fourlanches.domain.entities;
 
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderItem;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Builder
@@ -12,9 +15,12 @@ import java.math.BigDecimal;
 public class Order {
 
     private Long id;
-    private BigDecimal price;
+    private List<OrderItem> orderItems;
+    private Long customerId;
+    private BigDecimal totalPrice;
+    private OrderStatus status;
 
     public boolean isValid() {
-        return true;
+        return !orderItems.isEmpty();
     }
 }

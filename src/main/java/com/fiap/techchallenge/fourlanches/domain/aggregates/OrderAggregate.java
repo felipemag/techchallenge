@@ -3,6 +3,7 @@ package com.fiap.techchallenge.fourlanches.domain.aggregates;
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidOrderException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.OrderRepository;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderVO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class OrderAggregate {
         if(!order.isValid()) {
             throw new InvalidOrderException();
         }
+        order.setStatus(OrderStatus.CREATED);
         return repository.create(order);
     }
 
