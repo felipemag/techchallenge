@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.adapter.driver.api;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor;
 
 import lombok.Builder;
 import lombok.Data;

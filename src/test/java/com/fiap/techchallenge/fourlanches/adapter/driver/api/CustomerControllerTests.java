@@ -3,11 +3,12 @@ package com.fiap.techchallenge.fourlanches.adapter.driver.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers.CustomerController;
+import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.ApiErrorMessage;
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.CustomerControllerAdvisor;
-import com.fiap.techchallenge.fourlanches.domain.exception.CustomerNotFoundException;
-import com.fiap.techchallenge.fourlanches.domain.exception.CustomerSaveException;
-import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
-import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;
+import com.fiap.techchallenge.fourlanches.application.exception.CustomerNotFoundException;
+import com.fiap.techchallenge.fourlanches.application.exception.CustomerSaveException;
+import com.fiap.techchallenge.fourlanches.application.dto.CustomerDTO;
+import com.fiap.techchallenge.fourlanches.application.usecases.CustomerUseCase;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +41,7 @@ public class CustomerControllerTests {
     private MockMvc mvc;
 
     @Mock
-    private CustomerAggregate customerAggregate;
+    private CustomerUseCase customerUseCase;
 
     @InjectMocks
     private CustomerController customerController;
@@ -63,7 +64,7 @@ public class CustomerControllerTests {
     void givenDocument_whenCustomerNotFound_ThenError() throws Exception {
         var expectedErrorMessage = new ApiErrorMessage(HttpStatus.NOT_FOUND, "customer not found");
 
-        when(customerAggregate.getCustomerByDocument("00011122233")).thenThrow(CustomerNotFoundException.class);
+        when(customerUseCase.getCustomerByDocument("00011122233")).thenThrow(CustomerNotFoundException.class);
 
         var response = mvc.perform(get("/customers/00011122233").accept(MediaType.APPLICATION_JSON))
                 .andReturn()
@@ -86,7 +87,7 @@ public class CustomerControllerTests {
                 .document("00011122233")
                 .build();
 
-        when(customerAggregate.getCustomerByDocument("00011122233")).thenReturn(expectedCustomer);
+        when(customerUseCase.getCustomerByDocument("00011122233")).thenReturn(expectedCustomer);
 
         var response = mvc.perform(get("/customers/00011122233").accept(MediaType.APPLICATION_JSON))
                 .andReturn()
@@ -109,14 +110,14 @@ public class CustomerControllerTests {
                 .document("00011122233")
                 .build();
 
-        var customerToBeSaved = CustomerVO.builder()
+        var customerToBeSaved = CustomerDTO.builder()
                 .firstName("John")
                 .lastName("Doe")
                 .email("john.doe@email.com")
                 .document("00011122233")
                 .build();
 
-        when(customerAggregate.saveCustomer(customerToBeSaved)).thenReturn(expectedCustomer);
+        when(customerUseCase.saveCustomer(customerToBeSaved)).thenReturn(expectedCustomer);
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         var body = ow.writeValueAsString(customerToBeSaved);
@@ -136,7 +137,7 @@ public class CustomerControllerTests {
 
     @Test
     void givenCustomerToBeSaved_whenSaveFails_ThenError() throws Exception {
-        var customerToBeSaved = CustomerVO.builder()
+        var customerToBeSaved = CustomerDTO.builder()
                 .firstName("John")
                 .lastName("Doe")
                 .email("john.doe@email.com")
@@ -145,7 +146,7 @@ public class CustomerControllerTests {
 
         var expectedErrorMessage = new ApiErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, "could not save customer");
 
-        when(customerAggregate.saveCustomer(customerToBeSaved)).thenThrow(CustomerSaveException.class);
+        when(customerUseCase.saveCustomer(customerToBeSaved)).thenThrow(CustomerSaveException.class);
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         var body = ow.writeValueAsString(customerToBeSaved);

@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
-import com.fiap.techchallenge.fourlanches.domain.aggregates.FakeCheckoutAggregate;
+import com.fiap.techchallenge.fourlanches.application.usecases.CheckoutUseCase;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +14,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @RequestMapping("fake-checkout")
 public class FakeCheckoutController {
-    private FakeCheckoutAggregate fakeCheckoutAggregate;
+    private CheckoutUseCase checkoutUseCase;
 
     @PostMapping("")
     @ApiResponse(responseCode = "200")
     public boolean doFakeCheckout(@RequestParam long orderId, @RequestParam BigDecimal totalAmount) {
-        return fakeCheckoutAggregate.doFakeCheckout(orderId, totalAmount);
+        return checkoutUseCase.doFakeCheckout(orderId, totalAmount);
     }
 
 }

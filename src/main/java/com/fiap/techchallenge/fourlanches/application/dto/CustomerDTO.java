@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.domain.valueobjects;
+package com.fiap.techchallenge.fourlanches.application.dto;
 
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.CustomerJpaEntity;
 import jakarta.validation.constraints.Email;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerVO {
+public class CustomerDTO {
 
     @NotEmpty
     private String firstName;

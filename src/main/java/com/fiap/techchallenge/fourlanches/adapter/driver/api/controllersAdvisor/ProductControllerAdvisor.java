@@ -1,8 +1,7 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor;
 
-import com.fiap.techchallenge.fourlanches.adapter.driver.api.ApiErrorMessage;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
-import com.fiap.techchallenge.fourlanches.domain.exception.ProductNotFoundException;
+import com.fiap.techchallenge.fourlanches.application.exception.ProductNotFoundException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,5 +25,4 @@ public class ProductControllerAdvisor {
 
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
-
 }

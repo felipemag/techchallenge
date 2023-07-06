@@ -1,6 +1,7 @@
-package com.fiap.techchallenge.fourlanches.domain.valueobjects;
+package com.fiap.techchallenge.fourlanches.application.dto;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
+import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderItem;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class OrderVO {
+public class OrderDTO {
 
     private List<OrderItem> orderItems;
     private BigDecimal price;

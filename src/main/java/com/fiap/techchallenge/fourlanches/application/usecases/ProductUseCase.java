@@ -1,10 +1,10 @@
-package com.fiap.techchallenge.fourlanches.domain.aggregates;
+package com.fiap.techchallenge.fourlanches.application.usecases;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;
-import com.fiap.techchallenge.fourlanches.domain.valueobjects.ProductVO;
+import com.fiap.techchallenge.fourlanches.application.dto.ProductDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ProductAggregate {
+public class ProductUseCase {
 
     ProductRepository productRepository;
 
@@ -28,16 +28,16 @@ public class ProductAggregate {
         return productRepository.getProductsByCategory(category);
     }
 
-    public Long createProduct(ProductVO productVO) throws InvalidProductException {
-        Product product = productVO.toProduct();
+    public Long createProduct(ProductDTO productDTO) throws InvalidProductException {
+        Product product = productDTO.toProduct();
         if(!product.isValid()) {
             throw new InvalidProductException();
         }
         return productRepository.create(product);
     }
 
-    public void updateProduct(String id, ProductVO productVO) throws InvalidProductException {
-        Product product = productVO.toProduct();
+    public void updateProduct(String id, ProductDTO productDTO) throws InvalidProductException {
+        Product product = productDTO.toProduct();
         if(!product.isValid()) {
             throw new InvalidProductException();
         }

@@ -1,10 +1,9 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
-import com.fiap.techchallenge.fourlanches.domain.valueobjects.CustomerVO;
-import com.fiap.techchallenge.fourlanches.domain.aggregates.CustomerAggregate;
+import com.fiap.techchallenge.fourlanches.application.dto.CustomerDTO;
+import com.fiap.techchallenge.fourlanches.application.usecases.CustomerUseCase;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,21 +12,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("customers")
 public class CustomerController {
-    private final CustomerAggregate customerAggregate;
+    private final CustomerUseCase customerUseCase;
 
     @Autowired
-    public CustomerController(CustomerAggregate customerAggregate) {
-        this.customerAggregate = customerAggregate;
+    public CustomerController(CustomerUseCase customerUseCase) {
+        this.customerUseCase = customerUseCase;
     }
 
     @GetMapping(value = "/{document}", produces = "application/json")
     public Customer getCustomerByDocument(@PathVariable String document) {
-        return customerAggregate.getCustomerByDocument(document);
+        return customerUseCase.getCustomerByDocument(document);
     }
 
     @PostMapping(value = "", consumes = "application/json", produces = "application/json")
-    public Customer saveCustomer(@RequestBody @Valid CustomerVO customer) {
+    public Customer saveCustomer(@RequestBody @Valid CustomerDTO customer) {
 
-        return customerAggregate.saveCustomer(customer);
+        return customerUseCase.saveCustomer(customer);
     }
 }

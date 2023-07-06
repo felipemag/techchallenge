@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.domain.valueobjects;
+package com.fiap.techchallenge.fourlanches.application.dto;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Data
 @Builder
-public class ProductVO {
+public class ProductDTO {
 
     private Category category;
     private String name;

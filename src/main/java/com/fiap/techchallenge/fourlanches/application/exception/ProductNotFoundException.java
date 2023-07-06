@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.domain.exception;
+package com.fiap.techchallenge.fourlanches.application.exception;
 
 import lombok.Data;
 

@@ -1,11 +1,11 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.ProductControllerAdvisor;
-import com.fiap.techchallenge.fourlanches.domain.aggregates.ProductAggregate;
+import com.fiap.techchallenge.fourlanches.application.usecases.ProductUseCase;
 import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
-import com.fiap.techchallenge.fourlanches.domain.valueobjects.ProductVO;
+import com.fiap.techchallenge.fourlanches.application.dto.ProductDTO;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,43 +20,43 @@ import java.util.List;
 @RequestMapping("products")
 public class ProductController {
 
-    private ProductAggregate productAggregate;
+    private ProductUseCase productUseCase;
 
     @GetMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public Product getProduct(@PathVariable String id) {
-        return productAggregate.getProductById(id);
+        return productUseCase.getProductById(id);
     }
 
     @GetMapping(value = "/", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public List<Product> getProducts() {
-        return productAggregate.getProducts();
+        return productUseCase.getProducts();
     }
 
     @GetMapping(value = "/categories/{category}", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public List<Product> getProductsByCategory(@PathVariable Category category) {
-        return productAggregate.getProductsByCategory(category);
+        return productUseCase.getProductsByCategory(category);
     }
 
     @PostMapping(value = "/", produces = "application/json")
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<Long> createProduct(@RequestBody ProductVO productVO) throws InvalidProductException {
-        Long returnedId = productAggregate.createProduct(productVO);
+    public ResponseEntity<Long> createProduct(@RequestBody ProductDTO productDTO) throws InvalidProductException {
+        Long returnedId = productUseCase.createProduct(productDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(returnedId);
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
-    public void updateProduct(@PathVariable String id, @RequestBody ProductVO productVO) throws InvalidProductException {
-        productAggregate.updateProduct(id, productVO);
+    public void updateProduct(@PathVariable String id, @RequestBody ProductDTO productDTO) throws InvalidProductException {
+        productUseCase.updateProduct(id, productDTO);
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public void deleteProduct(@PathVariable String id) {
-         productAggregate.deleteProduct(id);
+         productUseCase.deleteProduct(id);
     }
 
 }

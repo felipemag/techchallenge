@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.domain.exception;
+package com.fiap.techchallenge.fourlanches.adapter.driver.api.exception;
 
 public class InternalServerError extends RuntimeException {
     public InternalServerError() {

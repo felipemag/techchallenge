@@ -1,10 +1,9 @@
-package com.fiap.techchallenge.fourlanches.domain.exception;
+package com.fiap.techchallenge.fourlanches.application.exception;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 
 @Data
-public class CustomerNotFoundException extends EntityNotFoundException {
+public class CustomerNotFoundException  extends RuntimeException {
     public CustomerNotFoundException() {
     }
 

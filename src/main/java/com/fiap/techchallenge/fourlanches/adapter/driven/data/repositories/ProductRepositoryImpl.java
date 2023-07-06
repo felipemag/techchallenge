@@ -4,7 +4,7 @@ import com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.ProductJp
 import com.fiap.techchallenge.fourlanches.adapter.driven.data.ProductJpaRepository;
 import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
-import com.fiap.techchallenge.fourlanches.domain.exception.ProductNotFoundException;
+import com.fiap.techchallenge.fourlanches.application.exception.ProductNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
