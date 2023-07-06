@@ -12,14 +12,15 @@ import java.math.BigDecimal;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("fake-checkout")
-public class FakeCheckoutController {
+@RequestMapping("checkout")
+public class CheckoutController {
+
     private CheckoutUseCase checkoutUseCase;
 
-    @PostMapping("")
+    @PostMapping
     @ApiResponse(responseCode = "200")
-    public boolean doFakeCheckout(@RequestParam long orderId, @RequestParam BigDecimal totalAmount) {
-        return checkoutUseCase.doFakeCheckout(orderId, totalAmount);
+    public boolean processPayment(@RequestParam long orderId, @RequestParam BigDecimal totalAmount) {
+        return checkoutUseCase.processPayment(orderId, totalAmount);
     }
 
 }
