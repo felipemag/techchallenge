@@ -15,8 +15,15 @@
 * [IDE IntelliJ](https://www.jetbrains.com/idea/)
 * [Docker](https://www.docker.com/)
 
-### Para rodar o app no docker
+### Para buildar, executar as migration e rodar o app no docker pela primeira vez
+
 `docker compose up --build -d`
+
+### Para executar o app com docker após a primeira vez
+Após rodar a primeira o comando acima, execute o seguinte comando abaixo para que apenas execute 
+os containers sem a etapa de build e migration.
+
+`docker compose up -d app db`
 
 ### Necessário um arquivo .env na raiz do projeto com a seguinte conteúdo:
 ```
