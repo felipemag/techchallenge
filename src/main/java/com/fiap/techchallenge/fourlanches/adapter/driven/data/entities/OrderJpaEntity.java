@@ -47,12 +47,14 @@ public class OrderJpaEntity {
                 .totalPrice(totalPrice)
                 .status(OrderStatus.valueOf(status))
                 .orderItems(orderItems.stream().map(OrderItemJpaEntity::toOrderItem).toList())
+                .customerId(customerId)
                 .build();
     }
 
     public static OrderJpaEntity fromOrder(Order order) {
         OrderJpaEntity orderJpaEntity = OrderJpaEntity.builder()
                 .totalPrice(order.getTotalPrice())
+                .customerId(order.getCustomerId())
                 .status(order.getStatus().toString())
                 .build();
         orderJpaEntity.setOrderItems(order.getOrderItems().stream()
