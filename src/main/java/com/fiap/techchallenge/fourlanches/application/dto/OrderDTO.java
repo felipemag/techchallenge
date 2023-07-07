@@ -15,14 +15,14 @@ public class OrderDTO {
 
     @JsonProperty("items")
     private List<OrderItem> orderItems;
-    private BigDecimal price;
     private Long customerId;
+    private BigDecimal totalPrice;
 
     public Order toOrder() {
         return Order.builder()
                 .orderItems(orderItems)
-                .totalPrice(price)
                 .customerId(customerId)
+                .totalPrice(totalPrice)
                 .build();
     }
 }
