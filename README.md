@@ -30,7 +30,7 @@ Para atualizar migrações do banco, apenas rode:
 ./gradlew flywayMigrate -i
 ```
 
-### .env -> Environment Variables
+### .env -> Environemnt Variables
 Rode o comando abaixo para carregar o arquivo .env como Environment Variable (em unix-like shells)  
 Importante fazer isso para poder rodar o flyway 
 ```
@@ -38,4 +38,3 @@ Importante fazer isso para poder rodar o flyway
 ```
 
 ### Additional Links
-
