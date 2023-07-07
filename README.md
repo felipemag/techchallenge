@@ -31,4 +31,8 @@ DATABASE_USERNAME=username_do_banco
 DATABASE_PASSWORD=password_do_banco
 ```
 
-### Additional Links
+### Testando com insomnia
+Para executar as requisições com o insomnia, basta importar o arquivo `insomnia-collection.json`
+no seu insomnia que a collection estará pronta para ser usada.
+
+### Links Adicionais
