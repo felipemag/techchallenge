@@ -24,11 +24,11 @@ public class ProductController {
 
     @GetMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
-    public Product getProduct(@PathVariable String id) {
+    public Product getProduct(@PathVariable Long id) {
         return productUseCase.getProductById(id);
     }
 
-    @GetMapping(value = "/", produces = "application/json")
+    @GetMapping(value = "", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public List<Product> getProducts() {
         return productUseCase.getProducts();
@@ -40,7 +40,7 @@ public class ProductController {
         return productUseCase.getProductsByCategory(category);
     }
 
-    @PostMapping(value = "/", produces = "application/json")
+    @PostMapping(value = "", produces = "application/json")
     @ApiResponse(responseCode = "201")
     public ResponseEntity<Long> createProduct(@RequestBody ProductDTO productDTO) throws InvalidProductException {
         Long returnedId = productUseCase.createProduct(productDTO);
@@ -49,13 +49,13 @@ public class ProductController {
 
     @PutMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
-    public void updateProduct(@PathVariable String id, @RequestBody ProductDTO productDTO) throws InvalidProductException {
+    public void updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) throws InvalidProductException {
         productUseCase.updateProduct(id, productDTO);
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
     @ApiResponse(responseCode = "200")
-    public void deleteProduct(@PathVariable String id) {
+    public void deleteProduct(@PathVariable Long id) {
          productUseCase.deleteProduct(id);
     }
 

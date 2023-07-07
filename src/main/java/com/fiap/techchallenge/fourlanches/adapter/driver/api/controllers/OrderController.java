@@ -25,7 +25,7 @@ public class OrderController {
 
     private OrderUseCase orderUseCase;
 
-    @PostMapping(value = "/", produces = "application/json")
+    @PostMapping(value = "", produces = "application/json")
     @ApiResponse(responseCode = "201")
     public ResponseEntity<Long> createOrder(@RequestBody OrderDTO orderDTO) throws InvalidOrderException {
         Long returnedId = orderUseCase.createOrder(orderDTO);

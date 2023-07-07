@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository {
 
-    Product getProductById(String id);
+    Product getProductById(Long id);
 
     List<Product> getProducts();
 
@@ -17,7 +17,7 @@ public interface ProductRepository {
 
     Long create(Product product);
 
-    void deleteProduct(String id);
+    void deleteProduct(Long id);
 
     void updateProduct(Product product);
 }

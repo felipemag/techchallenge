@@ -1,5 +1,6 @@
 package com.fiap.techchallenge.fourlanches.application.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderItem;
 import lombok.Builder;
@@ -12,6 +13,7 @@ import java.util.List;
 @Builder
 public class OrderDTO {
 
+    @JsonProperty("items")
     private List<OrderItem> orderItems;
     private BigDecimal price;
     private Long customerId;

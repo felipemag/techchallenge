@@ -18,8 +18,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     private ProductJpaRepository jpaRepository;
 
-    public Product getProductById(String id) {
-        return jpaRepository.findById(Long.getLong(id))
+    public Product getProductById(Long id) {
+        return jpaRepository.findById(id)
                 .orElseThrow(ProductNotFoundException::new).toProduct();
     }
 
@@ -30,8 +30,8 @@ public class ProductRepositoryImpl implements ProductRepository {
         return jpaRepository.findByCategory(category.toString()).stream().map(ProductJpaEntity::toProduct).collect(Collectors.toList());
     }
 
-    public void deleteProduct(String id) {
-        jpaRepository.deleteById(Long.getLong(id));
+    public void deleteProduct(Long id) {
+        jpaRepository.deleteById(id);
     }
 
     public void updateProduct(Product product) {

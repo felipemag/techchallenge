@@ -16,7 +16,7 @@ public class ProductUseCase {
 
     ProductRepository productRepository;
 
-    public Product getProductById(String id) {
+    public Product getProductById(Long id) {
         return productRepository.getProductById(id);
     }
 
@@ -36,17 +36,17 @@ public class ProductUseCase {
         return productRepository.create(product);
     }
 
-    public void updateProduct(String id, ProductDTO productDTO) throws InvalidProductException {
+    public void updateProduct(Long id, ProductDTO productDTO) throws InvalidProductException {
         Product product = productDTO.toProduct();
         if(!product.isValid()) {
             throw new InvalidProductException();
         }
         productRepository.getProductById(id);
-        product.setId(Long.getLong(id));
+        product.setId(id);
         productRepository.updateProduct(product);
     }
 
-    public void deleteProduct(String id) {
+    public void deleteProduct(Long id) {
          productRepository.deleteProduct(id);
     }
 
