@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fourlanches-config
+  labels:
+    app: fourlanches
+data:
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres-svc:5432/fourlanches"
+  SPRING_JPA_HIBERNATE_DDL_AUTO: "none"

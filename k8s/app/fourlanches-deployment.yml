@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fourlanches-deployment
+  labels:
+    app: fourlanches
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fourlanches
+  template:
+    metadata:
+      labels:
+        app: fourlanches
+    spec:
+      containers:
+        - name: fourlanches
+          image: augustoasilva/fourlanches:2.0.0-alpha-1
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: fourlanches-config
+            - secretRef:
+                name: fourlanches-secret
