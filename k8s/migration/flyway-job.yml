@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: flyway-fourlanches-migration
+spec:
+  template:
+    spec:
+      containers:
+        - name: flyway
+          image: flyway/flyway
+          args:
+            - info
+            - repair
+            - migrate
+            - info
+          env:
+            - name: FLYWAY_URL
+              value: jdbc:postgresql://postgres-svc:5432/fourlanches
+            - name: FLYWAY_USER
+              valueFrom:
+                secretKeyRef:
+                  name: fourlanches-secret
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: FLYWAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fourlanches-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+          volumeMounts:
+            - mountPath: /flyway/sql
+              name: sql
+      volumes:
+        - name: sql
+          configMap:
+            name: flyway-config
+      restartPolicy: Never
