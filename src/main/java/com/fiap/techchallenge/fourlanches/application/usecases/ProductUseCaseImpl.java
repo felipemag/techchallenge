@@ -5,6 +5,7 @@ import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;
 import com.fiap.techchallenge.fourlanches.application.dto.ProductDTO;
+import com.fiap.techchallenge.fourlanches.domain.usecases.ProductUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ProductUseCase {
+public class ProductUseCaseImpl implements ProductUseCase {
 
     ProductRepository productRepository;
 
@@ -49,5 +50,4 @@ public class ProductUseCase {
     public void deleteProduct(Long id) {
          productRepository.deleteProduct(id);
     }
-
 }

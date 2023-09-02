@@ -3,6 +3,7 @@ package com.fiap.techchallenge.fourlanches.application.usecases;
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidOrderException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.OrderRepository;
+import com.fiap.techchallenge.fourlanches.domain.usecases.OrderUseCase;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
 import com.fiap.techchallenge.fourlanches.application.dto.OrderDTO;
 import lombok.AllArgsConstructor;
@@ -12,12 +13,15 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class OrderUseCase {
+public class OrderUseCaseImpl implements OrderUseCase {
 
     OrderRepository repository;
 
+    public List<Order> getAllPendingOrdersOrderedByStatusAndCreatedAt(){
+        return repository.getAllOrdersOrderedByStatusAndCreatedAt();
+    }
     public Long createOrder(OrderDTO orderDTO) throws InvalidOrderException {
-        Order order = orderDTO.toOrder();
+        Order order = orderDTO.toNewOrder();
         if(!order.isValid()) {
             throw new InvalidOrderException();
         }
@@ -28,5 +32,4 @@ public class OrderUseCase {
     public List<Order> getOrdersByStatus(OrderStatus status) {
         return repository.getOrdersByStatus(status);
     }
-
 }

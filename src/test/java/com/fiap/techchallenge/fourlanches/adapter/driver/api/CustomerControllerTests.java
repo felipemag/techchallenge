@@ -8,8 +8,8 @@ import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.
 import com.fiap.techchallenge.fourlanches.application.exception.CustomerNotFoundException;
 import com.fiap.techchallenge.fourlanches.application.exception.CustomerSaveException;
 import com.fiap.techchallenge.fourlanches.application.dto.CustomerDTO;
-import com.fiap.techchallenge.fourlanches.application.usecases.CustomerUseCase;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
+import com.fiap.techchallenge.fourlanches.domain.usecases.CustomerUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

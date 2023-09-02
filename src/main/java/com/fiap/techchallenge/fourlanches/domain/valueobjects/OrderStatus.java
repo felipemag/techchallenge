@@ -1,5 +1,9 @@
 package com.fiap.techchallenge.fourlanches.domain.valueobjects;
 
 public enum OrderStatus {
-    CREATED;
+    CREATED,
+    IN_PREPARATION,
+    RECEIVED,
+    READY,
+    FINISHED
 }

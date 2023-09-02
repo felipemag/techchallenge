@@ -1,6 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
-import com.fiap.techchallenge.fourlanches.application.usecases.CheckoutUseCase;
+import com.fiap.techchallenge.fourlanches.domain.usecases.CheckoutUseCase;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

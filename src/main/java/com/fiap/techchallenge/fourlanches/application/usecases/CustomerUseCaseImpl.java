@@ -5,6 +5,7 @@ import com.fiap.techchallenge.fourlanches.application.exception.CustomerNotFound
 import com.fiap.techchallenge.fourlanches.application.exception.CustomerSaveException;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
 import com.fiap.techchallenge.fourlanches.domain.repositories.CustomerRepository;
+import com.fiap.techchallenge.fourlanches.domain.usecases.CustomerUseCase;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.OptimisticLockingFailureException;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class CustomerUseCase {
+public class CustomerUseCaseImpl implements CustomerUseCase {
 
     private final static String COULD_NOT_SAVE_MSG = "could not save customer";
 

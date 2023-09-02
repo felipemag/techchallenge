@@ -1,8 +1,8 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
 import com.fiap.techchallenge.fourlanches.application.dto.CustomerDTO;
-import com.fiap.techchallenge.fourlanches.application.usecases.CustomerUseCase;
 import com.fiap.techchallenge.fourlanches.domain.entities.Customer;
+import com.fiap.techchallenge.fourlanches.domain.usecases.CustomerUseCase;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

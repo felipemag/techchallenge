@@ -29,4 +29,8 @@ public class OrderRepositoryImpl implements OrderRepository {
         return jpaRepository.findByStatus(status.toString()).stream().map(OrderJpaEntity::toOrder).toList();
     }
 
+    @Override
+    public List<Order> getAllOrdersOrderedByStatusAndCreatedAt() {
+        return jpaRepository.getAllPendingOrdersOrderedByStatusAndCreatedAt().stream().map(OrderJpaEntity::toOrder).toList();
+    }
 }

@@ -1,11 +1,11 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
 import com.fiap.techchallenge.fourlanches.adapter.driver.api.controllersAdvisor.ProductControllerAdvisor;
-import com.fiap.techchallenge.fourlanches.application.usecases.ProductUseCase;
+import com.fiap.techchallenge.fourlanches.application.dto.ProductDTO;
 import com.fiap.techchallenge.fourlanches.domain.entities.Category;
 import com.fiap.techchallenge.fourlanches.domain.entities.Product;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidProductException;
-import com.fiap.techchallenge.fourlanches.application.dto.ProductDTO;
+import com.fiap.techchallenge.fourlanches.domain.usecases.ProductUseCase;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -13,4 +13,6 @@ public interface OrderRepository {
 
     List<Order> getOrdersByStatus(OrderStatus status);
 
+    List<Order> getAllOrdersOrderedByStatusAndCreatedAt();
+
 }

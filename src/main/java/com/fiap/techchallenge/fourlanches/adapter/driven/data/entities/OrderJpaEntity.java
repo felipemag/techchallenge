@@ -2,21 +2,14 @@ package com.fiap.techchallenge.fourlanches.adapter.driven.data.entities;
 
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.fiap.techchallenge.fourlanches.adapter.driven.data.entities.OrderItemJpaEntity.fromOrderItem;
@@ -39,6 +32,8 @@ public class OrderJpaEntity {
     private Long customerId;
     @Column(name = "total_price")
     private BigDecimal totalPrice;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     private String status;
 
     public Order toOrder() {
@@ -48,6 +43,7 @@ public class OrderJpaEntity {
                 .status(OrderStatus.valueOf(status))
                 .orderItems(orderItems.stream().map(OrderItemJpaEntity::toOrderItem).toList())
                 .customerId(customerId)
+                .createdAt(createdAt)
                 .build();
     }
 
@@ -56,6 +52,7 @@ public class OrderJpaEntity {
                 .totalPrice(order.getTotalPrice())
                 .customerId(order.getCustomerId())
                 .status(order.getStatus().toString())
+                .createdAt(order.getCreatedAt())
                 .build();
         orderJpaEntity.setOrderItems(order.getOrderItems().stream()
                         .map(orderItem -> fromOrderItem(orderItem, orderJpaEntity)).toList());

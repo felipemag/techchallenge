@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -18,11 +19,12 @@ public class OrderDTO {
     private Long customerId;
     private BigDecimal totalPrice;
 
-    public Order toOrder() {
+    public Order toNewOrder() {
         return Order.builder()
                 .orderItems(orderItems)
                 .customerId(customerId)
                 .totalPrice(totalPrice)
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }
