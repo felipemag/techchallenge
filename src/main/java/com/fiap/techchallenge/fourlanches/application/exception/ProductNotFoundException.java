@@ -7,5 +7,4 @@ public class ProductNotFoundException extends RuntimeException {
 
     private String productId;
 
-
 }

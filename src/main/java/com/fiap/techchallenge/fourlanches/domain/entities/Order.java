@@ -23,6 +23,6 @@ public class Order {
     private LocalDateTime createdAt;
 
     public boolean isValid() {
-        return !orderItems.isEmpty();
+        return !orderItems.isEmpty() && status != null;
     }
 }

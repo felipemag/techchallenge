@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CheckoutUseCaseImpl implements CheckoutUseCase {
 
-    PaymentGateway gateway;
+    private final PaymentGateway gateway;
 
     public boolean processPayment(long orderId, BigDecimal totalAmount){
         return gateway.processPayment(orderId, totalAmount);

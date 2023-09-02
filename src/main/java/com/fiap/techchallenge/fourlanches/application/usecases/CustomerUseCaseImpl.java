@@ -11,14 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @AllArgsConstructor
-@Slf4j
 public class CustomerUseCaseImpl implements CustomerUseCase {
 
     private final static String COULD_NOT_SAVE_MSG = "could not save customer";
 
-    CustomerRepository repository;
+    private final CustomerRepository repository;
 
     public Customer getCustomerByDocument(String document) throws CustomerNotFoundException {
         return repository.getCustomerByDocument(document);

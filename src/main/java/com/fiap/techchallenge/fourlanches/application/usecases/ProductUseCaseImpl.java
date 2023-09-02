@@ -7,15 +7,17 @@ import com.fiap.techchallenge.fourlanches.domain.repositories.ProductRepository;
 import com.fiap.techchallenge.fourlanches.application.dto.ProductDTO;
 import com.fiap.techchallenge.fourlanches.domain.usecases.ProductUseCase;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ProductUseCaseImpl implements ProductUseCase {
 
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public Product getProductById(Long id) {
         return productRepository.getProductById(id);
