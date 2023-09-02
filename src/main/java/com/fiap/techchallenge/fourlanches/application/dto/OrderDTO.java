@@ -17,6 +17,7 @@ public class OrderDTO {
     @JsonProperty("items")
     private List<OrderItem> orderItems;
     private Long customerId;
+    @JsonProperty("total_price")
     private BigDecimal totalPrice;
 
     public Order toNewOrder() {

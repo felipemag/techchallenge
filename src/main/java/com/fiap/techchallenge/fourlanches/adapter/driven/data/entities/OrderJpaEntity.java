@@ -54,6 +54,7 @@ public class OrderJpaEntity {
                 .status(order.getStatus().toString())
                 .createdAt(order.getCreatedAt())
                 .build();
+
         orderJpaEntity.setOrderItems(order.getOrderItems().stream()
                         .map(orderItem -> fromOrderItem(orderItem, orderJpaEntity)).toList());
         return orderJpaEntity;

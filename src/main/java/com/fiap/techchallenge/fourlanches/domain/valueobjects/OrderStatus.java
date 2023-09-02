@@ -5,5 +5,5 @@ public enum OrderStatus {
     IN_PREPARATION,
     RECEIVED,
     READY,
-    FINISHED
+    FINISHED;
 }

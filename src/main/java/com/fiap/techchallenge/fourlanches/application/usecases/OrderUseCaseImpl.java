@@ -29,7 +29,12 @@ public class OrderUseCaseImpl implements OrderUseCase {
         return repository.create(order);
     }
 
+    public void updateOrderStatus(Long id, OrderStatus orderStatus) {
+        repository.updateOrderStatus(id, orderStatus);
+    }
+
     public List<Order> getOrdersByStatus(OrderStatus status) {
         return repository.getOrdersByStatus(status);
     }
+
 }

@@ -9,7 +9,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -24,6 +30,14 @@ public class OrderController {
     @ApiResponse(responseCode = "200")
     public List<Order> getOrders() {
         return orderUseCase.getAllPendingOrdersOrderedByStatusAndCreatedAt();
+    }
+
+    @PatchMapping(value = "/{id}/{status}", produces = "application/json")
+    @ApiResponse(responseCode = "201")
+    public ResponseEntity<Void> updateOrderStatus(@PathVariable Long id, @PathVariable OrderStatus status)
+            throws InvalidOrderException {
+        orderUseCase.updateOrderStatus(id, status);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "/status/{status}", produces = "application/json")

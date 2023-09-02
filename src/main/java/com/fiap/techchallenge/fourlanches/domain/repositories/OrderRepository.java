@@ -11,8 +11,14 @@ public interface OrderRepository {
 
     Long create(Order order);
 
+    Order getById(Long id);
+
+    boolean save(Order order);
+
     List<Order> getOrdersByStatus(OrderStatus status);
 
     List<Order> getAllOrdersOrderedByStatusAndCreatedAt();
+
+    void updateOrderStatus(Long id, OrderStatus orderStatus);
 
 }

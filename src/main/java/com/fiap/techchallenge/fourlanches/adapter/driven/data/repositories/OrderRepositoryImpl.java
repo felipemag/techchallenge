@@ -18,10 +18,21 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Long create(Order order) {
-
         OrderJpaEntity orderJpaEntity = jpaRepository.save(OrderJpaEntity.fromOrder(order));
-
         return orderJpaEntity.getId();
+    }
+
+    @Override
+    public Order getById(Long id) {
+        OrderJpaEntity orderJpaEntity = jpaRepository.getReferenceById(id);
+        return orderJpaEntity.toOrder();
+    }
+
+    @Override
+    public boolean save(Order order) {
+        OrderJpaEntity orderJpaEntity = OrderJpaEntity.fromOrder(order);
+        jpaRepository.save(orderJpaEntity);
+        return true;
     }
 
     @Override
@@ -33,4 +44,12 @@ public class OrderRepositoryImpl implements OrderRepository {
     public List<Order> getAllOrdersOrderedByStatusAndCreatedAt() {
         return jpaRepository.getAllPendingOrdersOrderedByStatusAndCreatedAt().stream().map(OrderJpaEntity::toOrder).toList();
     }
+
+    @Override
+    public void updateOrderStatus(Long id, OrderStatus orderStatus) {
+        OrderJpaEntity orderJpaEntity = jpaRepository.getReferenceById(id);
+        orderJpaEntity.setStatus(orderStatus.name());
+        jpaRepository.save(orderJpaEntity);
+    }
+
 }
