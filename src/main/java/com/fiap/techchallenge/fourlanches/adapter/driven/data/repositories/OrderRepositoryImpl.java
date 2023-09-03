@@ -46,9 +46,9 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public void updateOrderStatus(Long id, OrderStatus orderStatus) {
+    public void updateOrder(Long id, Order order) {
         OrderJpaEntity orderJpaEntity = jpaRepository.getReferenceById(id);
-        orderJpaEntity.setStatus(orderStatus.name());
+        orderJpaEntity.setStatus(order.getStatus().name());
         jpaRepository.save(orderJpaEntity);
     }
 

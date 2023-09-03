@@ -19,6 +19,6 @@ public interface OrderRepository {
 
     List<Order> getAllOrdersOrderedByStatusAndCreatedAt();
 
-    void updateOrderStatus(Long id, OrderStatus orderStatus);
+    void updateOrder(Long id, Order order);
 
 }

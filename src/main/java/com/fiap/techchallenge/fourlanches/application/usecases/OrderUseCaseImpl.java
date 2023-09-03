@@ -1,6 +1,7 @@
 package com.fiap.techchallenge.fourlanches.application.usecases;
 
 import com.fiap.techchallenge.fourlanches.application.dto.OrderDTO;
+import com.fiap.techchallenge.fourlanches.application.exception.OrderNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidOrderException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.OrderRepository;
@@ -10,6 +11,7 @@ import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -34,21 +36,31 @@ public class OrderUseCaseImpl implements OrderUseCase {
         return repository.create(order);
     }
 
-    public void updateOrderStatus(Long id, OrderStatus orderStatus) {
+    public void updateOrder(Long id, OrderDTO orderDTO) throws OrderNotFoundException {
         Order order = repository.getById(id);
-        switch (orderStatus) {
-            case CREATED -> orderStatusUseCase.orderCreated(order);
-            case RECEIVED -> orderStatusUseCase.orderReceived(order);
-            case IN_PREPARATION -> orderStatusUseCase.orderInPreparation(order);
-            case READY -> orderStatusUseCase.orderReady(order);
-            case FINISHED -> orderStatusUseCase.orderFinished(order);
-            case CANCELED -> orderStatusUseCase.orderCanceled(order);
+        if(ObjectUtils.isEmpty(order)) {
+            throw new OrderNotFoundException();
         }
-        repository.updateOrderStatus(id, orderStatus);
+        updateOrderStatus(order, orderDTO);
+        repository.updateOrder(id, order);
     }
 
     public List<Order> getOrdersByStatus(OrderStatus status) {
         return repository.getOrdersByStatus(status);
     }
 
+    private void updateOrderStatus(Order order, OrderDTO orderDTO) {
+
+        if(!ObjectUtils.isEmpty(orderDTO.getStatus())) {
+            switch (orderDTO.getStatus()) {
+                case CREATED -> orderStatusUseCase.orderCreated(order);
+                case RECEIVED -> orderStatusUseCase.orderReceived(order);
+                case IN_PREPARATION -> orderStatusUseCase.orderInPreparation(order);
+                case READY -> orderStatusUseCase.orderReady(order);
+                case FINISHED -> orderStatusUseCase.orderFinished(order);
+                case CANCELED -> orderStatusUseCase.orderCanceled(order);
+            }
+            order.setStatus(orderDTO.getStatus());
+        }
+    }
 }
