@@ -13,6 +13,7 @@ import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -47,21 +48,33 @@ public class OrderUseCaseImpl implements OrderUseCase {
         return repository.createOrder(order);
     }
 
-    public void updateOrderStatus(Long id, OrderStatus orderStatus) {
+    public void updateOrder(Long id, OrderDTO orderDTO) {
         Order order = repository.getById(id);
-        switch (orderStatus) {
-            case CREATED -> orderStatusUseCase.orderCreated(order);
-            case RECEIVED -> orderStatusUseCase.orderReceived(order);
-            case IN_PREPARATION -> orderStatusUseCase.orderInPreparation(order);
-            case READY -> orderStatusUseCase.orderReady(order);
-            case FINISHED -> orderStatusUseCase.orderFinished(order);
-            case CANCELED -> orderStatusUseCase.orderCanceled(order);
+        updateOrderStatus(order, orderDTO);
+        if (!ObjectUtils.isEmpty(orderDTO.getPaymentApproved())) {
+            order.setPaymentApproved(orderDTO.getPaymentApproved());
         }
-        repository.updateOrderStatus(id, orderStatus);
+        repository.updateOrder(id, order);
     }
 
     public List<Order> getOrdersByStatus(OrderStatus status) {
         return repository.getOrdersByStatus(status);
     }
 
+    public Order getById(Long id) { return repository.getById(id); }
+
+    private void updateOrderStatus(Order order, OrderDTO orderDTO) {
+
+        if(!ObjectUtils.isEmpty(orderDTO.getStatus())) {
+            switch (orderDTO.getStatus()) {
+                case CREATED -> orderStatusUseCase.orderCreated(order);
+                case RECEIVED -> orderStatusUseCase.orderReceived(order);
+                case IN_PREPARATION -> orderStatusUseCase.orderInPreparation(order);
+                case READY -> orderStatusUseCase.orderReady(order);
+                case FINISHED -> orderStatusUseCase.orderFinished(order);
+                case CANCELED -> orderStatusUseCase.orderCanceled(order);
+            }
+            order.setStatus(orderDTO.getStatus());
+        }
+    }
 }

@@ -10,5 +10,6 @@ public interface OrderUseCase {
     List<Order> getAllPendingOrdersOrderedByStatusAndCreatedAt();
     Order createOrder(OrderDTO orderDTO);
     List<Order> getOrdersByStatus(OrderStatus status);
-    void updateOrderStatus(Long id, OrderStatus orderStatus);
+    void updateOrder(Long id, OrderDTO orderDTO);
+    Order getById(Long id);
 }

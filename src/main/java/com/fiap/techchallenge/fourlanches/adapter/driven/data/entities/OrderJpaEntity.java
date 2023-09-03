@@ -35,6 +35,8 @@ public class OrderJpaEntity {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     private String status;
+    @Column(name = "payment_approved")
+    private Boolean paymentApproved;
 
     public Order toOrder() {
         return Order.builder()
@@ -44,6 +46,7 @@ public class OrderJpaEntity {
                 .orderItems(orderItems.stream().map(OrderItemJpaEntity::toOrderItem).toList())
                 .customerId(customerId)
                 .createdAt(createdAt)
+                .paymentApproved(paymentApproved)
                 .build();
     }
 
@@ -52,6 +55,7 @@ public class OrderJpaEntity {
                 .totalPrice(order.getTotalPrice())
                 .customerId(order.getCustomerId())
                 .status(order.getStatus().toString())
+                .paymentApproved(order.getPaymentApproved())
                 .createdAt(order.getCreatedAt())
                 .build();
 

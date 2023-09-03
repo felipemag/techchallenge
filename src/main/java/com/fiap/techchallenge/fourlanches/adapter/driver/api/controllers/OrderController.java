@@ -36,7 +36,7 @@ public class OrderController {
     @ApiResponse(responseCode = "201")
     public ResponseEntity<Void> updateOrderStatus(@PathVariable Long id, @PathVariable OrderStatus status)
             throws InvalidOrderException {
-        orderUseCase.updateOrderStatus(id, status);
+        orderUseCase.updateOrder(id, OrderDTO.builder().status(status).build());
         return ResponseEntity.ok().build();
     }
 
