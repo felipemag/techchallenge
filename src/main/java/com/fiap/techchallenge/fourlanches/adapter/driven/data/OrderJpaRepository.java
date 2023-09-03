@@ -18,8 +18,8 @@ public interface OrderJpaRepository extends JpaRepository<OrderJpaEntity, Long> 
             "WHERE o.status <> 'FINISHED' \n" +
             "ORDER BY case \n" +
             "WHEN o.status = 'READY' THEN 1\n" +
-            "WHEN o.status = 'RECEIVED' THEN 2\n" +
-            "WHEN o.status = 'IN_PREPARATION' THEN 3\n" +
+            "WHEN o.status = 'IN_PREPARATION' THEN 2\n" +
+            "WHEN o.status = 'RECEIVED' THEN 3\n" +
             "WHEN o.status = 'CREATED' THEN 4 END, o.createdAt ASC ")
     List<OrderJpaEntity> getAllPendingOrdersOrderedByStatusAndCreatedAt();
 }
