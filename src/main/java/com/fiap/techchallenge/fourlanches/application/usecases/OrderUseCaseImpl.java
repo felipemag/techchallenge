@@ -1,7 +1,6 @@
 package com.fiap.techchallenge.fourlanches.application.usecases;
 
 import com.fiap.techchallenge.fourlanches.application.dto.OrderDTO;
-import com.fiap.techchallenge.fourlanches.application.exception.OrderNotFoundException;
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
 import com.fiap.techchallenge.fourlanches.domain.exception.InvalidOrderException;
 import com.fiap.techchallenge.fourlanches.domain.repositories.OrderRepository;
@@ -36,12 +35,12 @@ public class OrderUseCaseImpl implements OrderUseCase {
         return repository.create(order);
     }
 
-    public void updateOrder(Long id, OrderDTO orderDTO) throws OrderNotFoundException {
+    public void updateOrder(Long id, OrderDTO orderDTO) {
         Order order = repository.getById(id);
-        if(ObjectUtils.isEmpty(order)) {
-            throw new OrderNotFoundException();
-        }
         updateOrderStatus(order, orderDTO);
+        if (!ObjectUtils.isEmpty(orderDTO.getPaymentApproved())) {
+            order.setPaymentApproved(orderDTO.getPaymentApproved());
+        }
         repository.updateOrder(id, order);
     }
 

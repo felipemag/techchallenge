@@ -1,7 +1,6 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
-import com.fiap.techchallenge.fourlanches.domain.usecases.OrderUseCase;
-import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
+import com.fiap.techchallenge.fourlanches.domain.usecases.PaymentUseCase;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,13 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RequestMapping("payment")
 public class PaymentController {
-    OrderUseCase orderUseCase;
+
     @PostMapping("/webhook")
     @ApiResponse(responseCode = "200")
     public void receivePaymentState(@RequestBody PaymentState paymentState){
-        switch (paymentState.type){
-            case "approved" -> orderUseCase.updateOrderStatus(paymentState.orderId, OrderStatus.RECEIVED);
-            case "canceled", "error" -> orderUseCase.updateOrderStatus(paymentState.orderId, OrderStatus.CANCELED);
+        if("approved".equals(paymentState.type)) {
+            paymentUseCase.approvePayment(paymentState.orderId);
         }
+
     }
+    PaymentUseCase paymentUseCase;
 }

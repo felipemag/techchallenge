@@ -21,6 +21,7 @@ public class Order {
     private BigDecimal totalPrice;
     private OrderStatus status;
     private LocalDateTime createdAt;
+    private Boolean paymentApproved;
 
     public boolean isValid() {
         return !orderItems.isEmpty() && status != null;

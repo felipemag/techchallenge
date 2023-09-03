@@ -20,6 +20,7 @@ public class OrderDTO {
     private Long customerId;
     private BigDecimal totalPrice;
     private OrderStatus status;
+    private Boolean paymentApproved;
 
     public Order toNewOrder() {
         return Order.builder()

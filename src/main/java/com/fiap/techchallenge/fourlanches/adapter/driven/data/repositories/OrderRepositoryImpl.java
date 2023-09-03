@@ -49,6 +49,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     public void updateOrder(Long id, Order order) {
         OrderJpaEntity orderJpaEntity = jpaRepository.getReferenceById(id);
         orderJpaEntity.setStatus(order.getStatus().name());
+        orderJpaEntity.setPaymentApproved(order.getPaymentApproved());
         jpaRepository.save(orderJpaEntity);
     }
 
