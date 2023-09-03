@@ -28,6 +28,7 @@ public class OrderDTO {
                 .customerId(customerId)
                 .totalPrice(totalPrice)
                 .status(status)
+                .paymentApproved(false)
                 .createdAt(LocalDateTime.now())
                 .build();
     }
