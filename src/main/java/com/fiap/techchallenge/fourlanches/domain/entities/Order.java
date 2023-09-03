@@ -25,4 +25,12 @@ public class Order {
     public boolean isValid() {
         return !orderItems.isEmpty() && status != null;
     }
+
+    public BigDecimal calculateTotalPrice(){
+        double price = 0;
+        for (OrderItem orderItem: this.orderItems) {
+            price += orderItem.getPrice() * orderItem.getQuantity();
+        }
+        return BigDecimal.valueOf(price);
+    }
 }

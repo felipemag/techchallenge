@@ -1,7 +1,7 @@
 package com.fiap.techchallenge.fourlanches.domain.usecases;
 
-import java.math.BigDecimal;
+import com.fiap.techchallenge.fourlanches.application.dto.OrderDTO;
 
 public interface CheckoutUseCase {
-    boolean processPayment(long orderId, BigDecimal totalAmount);
+    Long processPayment(OrderDTO orderDTO);
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface OrderRepository {
 
-    Long create(Order order);
+    Order createOrder(Order order);
 
     Order getById(Long id);
 

@@ -16,8 +16,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @Entity
 @Table(name = "order_items")
@@ -36,7 +34,7 @@ public class OrderItemJpaEntity {
     @Column(name = "product_id")
     private Long productId;
     private int quantity;
-    private BigDecimal price;
+    private double price;
     private String observation;
 
     public OrderItem toOrderItem() {

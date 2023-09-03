@@ -6,7 +6,6 @@ import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderItem;
 import lombok.Builder;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,14 +16,11 @@ public class OrderDTO {
     @JsonProperty("items")
     private List<OrderItem> orderItems;
     private Long customerId;
-    @JsonProperty("total_price")
-    private BigDecimal totalPrice;
 
     public Order toNewOrder() {
         return Order.builder()
                 .orderItems(orderItems)
                 .customerId(customerId)
-                .totalPrice(totalPrice)
                 .createdAt(LocalDateTime.now())
                 .build();
     }

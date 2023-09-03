@@ -1,14 +1,11 @@
 package com.fiap.techchallenge.fourlanches.adapter.driver.api.controllers;
 
+import com.fiap.techchallenge.fourlanches.application.dto.OrderDTO;
+import com.fiap.techchallenge.fourlanches.domain.exception.InvalidOrderException;
 import com.fiap.techchallenge.fourlanches.domain.usecases.CheckoutUseCase;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.math.BigDecimal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -19,8 +16,7 @@ public class CheckoutController {
 
     @PostMapping
     @ApiResponse(responseCode = "200")
-    public boolean processPayment(@RequestParam long orderId, @RequestParam BigDecimal totalAmount) {
-        return checkoutUseCase.processPayment(orderId, totalAmount);
+    public Long processPayment(@RequestBody OrderDTO orderDTO) throws InvalidOrderException {
+        return checkoutUseCase.processPayment(orderDTO);
     }
-
 }
