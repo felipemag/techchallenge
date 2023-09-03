@@ -48,6 +48,8 @@ public class OrderUseCaseImpl implements OrderUseCase {
         return repository.getOrdersByStatus(status);
     }
 
+    public Order getById(Long id) { return repository.getById(id); }
+
     private void updateOrderStatus(Order order, OrderDTO orderDTO) {
 
         if(!ObjectUtils.isEmpty(orderDTO.getStatus())) {

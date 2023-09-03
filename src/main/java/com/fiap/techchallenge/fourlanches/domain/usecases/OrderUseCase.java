@@ -11,4 +11,5 @@ public interface OrderUseCase {
     Long createOrder(OrderDTO orderDTO);
     List<Order> getOrdersByStatus(OrderStatus status);
     void updateOrder(Long id, OrderDTO orderDTO);
+    Order getById(Long id);
 }
