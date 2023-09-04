@@ -41,3 +41,5 @@ data:
                                document varchar(255) NOT NULL,
                                UNIQUE(email, document)
     );
+  V6__Add_Column_Payment_To_Order.sql: |
+    ALTER TABLE orders ADD COLUMN payment_approved BOOLEAN NOT NULL DEFAULT(false);
