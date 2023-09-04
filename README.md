@@ -53,7 +53,7 @@ kubectl apply -f k8s/db/postgres-db-deployment.yml
 kubectl apply -f k8s/db/postgres-db-svc.yml 
 ```
 Para confirmar que tudo deu certo, basta confirmar se tudo subiu corretamente executando um
-`kubectl get all` e validar se consegue visualizar o pod e service em execucação.
+`kubectl get all` e validar se consegue visualizar o pod e service em execução.
 
 #### Executando a migração
 Com o posgres executando, agora é fora de executar a migração para criação das tabelas.
