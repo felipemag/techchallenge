@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fourlanches
-          image: augustoasilva/fourlanches:2.0.0-alpha-1
+          image: augustoasilva/fourlanches:2.0.0-alpha-2
           ports:
             - containerPort: 8080
           envFrom:
