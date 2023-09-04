@@ -60,13 +60,13 @@ Com o posgres executando, agora é fora de executar a migração para criação 
 ```
 kubectl apply -f k8s/migration/flyway-configmap.yml 
 
+kubectl apply -f k8s/app/fourlanches-secrets.yml 
+
 kubectl apply -f k8s/migration/flyway-job.yml 
 ```
 #### Subindo a aplicação
 Agora com o postgres executando e com as tabelas criadas, basta executar os comandos abaixo:
 ```
-kubectl apply -f k8s/app/fourlanches-secrets.yml 
-
 kubectl apply -f k8s/app/fourlanches-configmap.yml 
 
 kubectl apply -f k8s/app/fourlanches-deployment.yml
