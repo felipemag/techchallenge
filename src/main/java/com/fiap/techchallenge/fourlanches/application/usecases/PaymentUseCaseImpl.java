@@ -2,7 +2,6 @@ package com.fiap.techchallenge.fourlanches.application.usecases;
 
 import com.fiap.techchallenge.fourlanches.application.dto.OrderDTO;
 import com.fiap.techchallenge.fourlanches.domain.entities.Order;
-import com.fiap.techchallenge.fourlanches.domain.entities.PaymentState;
 import com.fiap.techchallenge.fourlanches.domain.usecases.OrderUseCase;
 import com.fiap.techchallenge.fourlanches.domain.usecases.PaymentUseCase;
 import com.fiap.techchallenge.fourlanches.domain.valueobjects.OrderStatus;
@@ -27,14 +26,9 @@ public class PaymentUseCaseImpl implements PaymentUseCase {
     }
 
     @Override
-    public PaymentState getPaymentStateByOrderId(Long id) {
+    public PaymentStatus getPaymentStatusByOrderId(Long id) {
         Order order = orderUseCase.getById(id);
-        return PaymentState.builder()
-                .status(getPaymentStatus(order.getPaymentApproved()))
-                .build();
+        return PaymentStatus.getPaymentStatus(order.getPaymentApproved());
     }
 
-    private PaymentStatus getPaymentStatus(boolean paymentApproved){
-        return paymentApproved ? PaymentStatus.SUCCEEDED : PaymentStatus.WAITING;
-    }
 }
