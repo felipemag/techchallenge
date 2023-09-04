@@ -8,8 +8,12 @@ import java.util.List;
 
 public interface OrderUseCase {
     List<Order> getAllPendingOrdersOrderedByStatusAndCreatedAt();
-    Order createOrder(OrderDTO orderDTO);
     List<Order> getOrdersByStatus(OrderStatus status);
-    void updateOrder(Long id, OrderDTO orderDTO);
-    Order getById(Long id);
+    Order createOrder(OrderDTO orderDTO);
+    void receiveOrder(Long orderId, boolean paymentApproved);
+    void orderInPreparation(Long orderId);
+    void orderReady(Long orderId);
+    void orderFinished(Long orderId);
+    void orderCanceled(Long orderId);
+    Order getById(Long orderId);
 }

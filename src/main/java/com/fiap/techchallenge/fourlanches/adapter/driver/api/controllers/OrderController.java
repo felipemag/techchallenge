@@ -32,25 +32,49 @@ public class OrderController {
         return orderUseCase.getAllPendingOrdersOrderedByStatusAndCreatedAt();
     }
 
-    @PatchMapping(value = "/{id}/{status}", produces = "application/json")
+    @PostMapping(value = "", produces = "application/json")
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<Void> updateOrderStatus(@PathVariable Long id, @PathVariable OrderStatus status)
+    public ResponseEntity<Long> createOrder(@RequestBody OrderDTO orderDTO) throws InvalidOrderException {
+        Order order = orderUseCase.createOrder(orderDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(order.getId());
+    }
+
+    @PatchMapping(value = "/{orderId}/in_preparation", produces = "application/json")
+    @ApiResponse(responseCode = "201")
+    public ResponseEntity<Void> orderInPreparation(@PathVariable Long orderId)
             throws InvalidOrderException {
-        orderUseCase.updateOrder(id, OrderDTO.builder().status(status).build());
-        return ResponseEntity.ok().build();
+        orderUseCase.orderInPreparation(orderId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/{orderId}/ready", produces = "application/json")
+    @ApiResponse(responseCode = "201")
+    public ResponseEntity<Void> orderReady(@PathVariable Long orderId)
+            throws InvalidOrderException {
+        orderUseCase.orderReady(orderId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/{orderId}/finished", produces = "application/json")
+    @ApiResponse(responseCode = "201")
+    public ResponseEntity<Void> orderFinished(@PathVariable Long orderId)
+            throws InvalidOrderException {
+        orderUseCase.orderFinished(orderId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/{orderId}/cancel", produces = "application/json")
+    @ApiResponse(responseCode = "201")
+    public ResponseEntity<Void> orderCanceled(@PathVariable Long orderId)
+            throws InvalidOrderException {
+        orderUseCase.orderCanceled(orderId);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping(value = "/status/{status}", produces = "application/json")
     @ApiResponse(responseCode = "200")
     public List<Order> getOrdersByStatus(@PathVariable OrderStatus status) {
         return orderUseCase.getOrdersByStatus(status);
-    }
-
-    @PostMapping(value = "", produces = "application/json")
-    @ApiResponse(responseCode = "201")
-    public ResponseEntity<Long> createOrder(@RequestBody OrderDTO orderDTO) throws InvalidOrderException {
-        Order order = orderUseCase.createOrder(orderDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(order.getId());
     }
 
 }
